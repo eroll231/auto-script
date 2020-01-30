@@ -81,3 +81,4 @@ echo "Done!"
 
 clear
 ifconfig
+echo "Setup Complete."
