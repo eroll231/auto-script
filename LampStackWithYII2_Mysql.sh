@@ -88,25 +88,13 @@ sudo apt-get install php7.0-bcmath php7.0-cli php7.0-common php7.0-curl php7.0-d
 echo "############################################################"
 echo "############################################################"
 echo "#####################|------------------|###################"
-echo "#####################| Configuring mode |###################"
-echo "#####################|------------------|###################"
-echo "############################################################"
-echo "############################################################"
-sudo chmod -R 775 /var/www/html
-sudo chown -R www-data:www-data /var/www/html
-
-cd /var/www/html
-sudo rm *
-cd
-
-echo "############################################################"
-echo "############################################################"
-echo "#####################|------------------|###################"
 echo "#####################| Installing Yii2  |###################"
 echo "#####################|------------------|###################"
 echo "############################################################"
 echo "############################################################"
 wget https://github.com/yiisoft/yii2/releases/download/2.0.32/yii-advanced-app-2.0.32.tgz
+echo "Done."
+
 
 echo "############################################################"
 echo "############################################################"
@@ -116,11 +104,81 @@ echo "#####################|------------------|###################"
 echo "############################################################"
 echo "############################################################"
 tar -xvzf yii-advanced-app-2.0.32.tgz
+echo "Done."
 
 
+echo "############################################################"
+echo "############################################################"
+echo "#########|---------------------------------------|##########"
+echo "#########| Moving path into /var/www/html  Yii2  |##########"
+echo "#########|---------------------------------------|##########"
+echo "############################################################"
+echo "############################################################"
+sudo mv advanced/ /var/www/html/
+echo "Done."
+
+echo "############################################################"
+echo "############################################################"
+echo "####################|-------------------|###################"
+echo "####################| Configuring Yii2  |###################"
+echo "####################|-------------------|###################"
+echo "############################################################"
+echo "############################################################"
+cd /var/www/html/advanced/
+./init
+0
+rm composer.lock 
+composer install
+sudo su
+echo '
+<VirtualHost *:80>
+        ServerAdmin webmaster@localhost
+        DocumentRoot /var/www/html/advanced/backend/web
+        
+        
+         <Directory "/var/www/html/advanced/backend/web">
+           # use mod_rewrite for pretty URL support
+           RewriteEngine on
+           # If a directory or a file exists, use the request directly
+           RewriteCond %{REQUEST_FILENAME} !-f
+           RewriteCond %{REQUEST_FILENAME} !-d
+           # Otherwise forward the request to index.php
+           RewriteRule . index.php
+
+           # use index.php as index file
+           DirectoryIndex index.php
+
+       # ...other settings...
+       </Directory>
+
+        
+        ErrorLog ${APACHE_LOG_DIR}/error.log
+        CustomLog ${APACHE_LOG_DIR}/access.log combined
+
+</VirtualHost>
+
+' >| /etc/apache2/sites-available/000-default.conf
+exit
+
+sudo a2enmod rewrite
+sudo service apache2 restart
+
+echo "Done."
 
 
+echo "############################################################"
+echo "############################################################"
+echo "#####################|------------------|###################"
+echo "#####################| Configuring mode |###################"
+echo "#####################|------------------|###################"
+echo "############################################################"
+echo "############################################################"
+sudo chmod -R 775 /var/www/html
+sudo chown -R www-data:www-data /var/www/html
 
-
+cd /var/www/html
+sudo rm *
+clear
+ifconfig
 
 
