@@ -176,5 +176,5 @@ sudo chmod -R 775 /var/www/html
 sudo chown -R www-data:www-data /var/www/html
 
 clear
-cd /var/www/html
+cd /var/www/html/advanced
 ./init
