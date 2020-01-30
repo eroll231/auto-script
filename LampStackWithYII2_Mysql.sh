@@ -135,7 +135,6 @@ echo '
         ServerAdmin webmaster@localhost
         DocumentRoot /var/www/html/advanced/backend/web
         
-        
          <Directory "/var/www/html/advanced/backend/web">
            # use mod_rewrite for pretty URL support
            RewriteEngine on
@@ -150,7 +149,6 @@ echo '
 
        # ...other settings...
        </Directory>
-
         
         ErrorLog ${APACHE_LOG_DIR}/error.log
         CustomLog ${APACHE_LOG_DIR}/access.log combined
@@ -162,7 +160,6 @@ exit
 
 sudo a2enmod rewrite
 sudo service apache2 restart
-
 echo "Done."
 
 
@@ -176,8 +173,6 @@ echo "############################################################"
 sudo chmod -R 775 /var/www/html
 sudo chown -R www-data:www-data /var/www/html
 
-cd /var/www/html
-sudo rm *
 clear
 ifconfig
 
