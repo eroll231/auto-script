@@ -75,6 +75,9 @@ echo "############################################################"
 echo "############################################################"
 sudo chmod -R 775 /var/www/html
 sudo chown -R www-data:www-data /var/www/html
+echo ""
+echo ""
+echo "Done!"
 
 clear
 ifconfig
