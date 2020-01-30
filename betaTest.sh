@@ -33,10 +33,6 @@ db.createUser(
   }
 )
 
-exit
-
-mongod --port 27017 -u "admin" -p "hive1234" --authenticationDatabase "admin"
-
 use test
 
 db.createUser(
@@ -47,4 +43,4 @@ db.createUser(
   }
 )
 exit
-ech0 "Success.";
+echo "Success.";
