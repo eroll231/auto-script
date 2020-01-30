@@ -178,3 +178,5 @@ ifconfig
 echo "Ready to initialize";
 
 
+cd /var/www/html
+./init
