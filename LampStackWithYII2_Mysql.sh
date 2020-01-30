@@ -126,7 +126,7 @@ echo "############################################################"
 echo "############################################################"
 cd /var/www/html/advanced/
 ./init
-0
+
 rm composer.lock 
 composer install
 sudo su
