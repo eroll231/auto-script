@@ -159,7 +159,6 @@ exit
 
 sudo a2enmod rewrite
 sudo service apache2 restart
-./init
 echo "Done."
 
 
@@ -175,5 +174,6 @@ sudo chown -R www-data:www-data /var/www/html
 
 clear
 ifconfig
+echo "Ready to initialize";
 
 
