@@ -24,7 +24,7 @@ echo "############################################################"
 echo "############################################################"
 echo "mysql-server mysql-server/root_password password root" | sudo debconf-set-selections
 echo "mysql-server mysql-server/root_password_again password root" | sudo debconf-set-selections
-apt-get -y install mysql-server mysql-client
+sudo apt install mysql-server mysql-client -y
 
 
 echo "############################################################"
