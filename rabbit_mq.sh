@@ -1,35 +1,85 @@
 cd
 sudo apt-get update
 
-sudo apt-get install erlang
-sudo apt-get install rabbitmq-server
-sudo systemctl enable rabbitmq-server
+
+echo "############################################################"
+echo "############################################################"
+echo "##################|-------------------|#####################"
+echo "##################| Installing Erlang |#####################"
+echo "##################|-------------------|#####################"
+echo "############################################################"
+echo "############################################################"
+sudo apt-get install erlang -y
+echo "Done."
+
+
+echo "############################################################"
+echo "############################################################"
+echo "##################|---------------------|###################"
+echo "##################| Installing rabbitMQ |###################"
+echo "##################|---------------------|###################"
+echo "############################################################"
+echo "############################################################"
+sudo apt-get install rabbitmq-server -y
+sudo systemctl enable rabbitmq-server 
 sudo systemctl start rabbitmq-server
-sudo systemctl status rabbitmq-server
+echo "Done."
+
+
+echo "############################################################"
+echo "############################################################"
+echo "##################|------------------------|################"
+echo "##################| Configuring rabbitMQ |################"
+echo "##################|------------------------|################"
+echo "############################################################"
+echo "############################################################"
 sudo rabbitmq-plugins enable rabbitmq_management
 sudo rabbitmqctl add_user username password
 sudo rabbitmqctl set_user_tags username administrator
 sudo rabbitmqctl set_permissions -p / username ".*" ".*" ".*"
+echo "Done."
 
-install composer
-php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
-php -r "if (hash_file('sha384', 'composer-setup.php') === 'c5b9b6d368201a9db6f74e2611495f369991b72d9c8cbd3ffbc63edff210eb73d46ffbfce88669ad33695ef77dc76976') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
-php composer-setup.php
-php -r "unlink('composer-setup.php');"
 
-add this on composer.json
-{
-    "require": {
-        "php-amqplib/php-amqplib": ">=2.9.0"
-    }
-}
+echo "############################################################"
+echo "############################################################"
+echo "################|------------------------|##################"
+echo "################| Installing php modules |##################"
+echo "################|------------------------|##################"
+echo "############################################################"
+echo "############################################################"
+sudo apt install php7.0 -y
+sudo apt install  php7.0-mbstring php7.0-bcmath unzip php7.0-cli -y
+echo "Done."
 
-php composer.json
 
-to check
-open port 15672
-browse site: ipaddress:15672
+echo "############################################################"
+echo "############################################################"
+echo "################|---------------------|#####################"
+echo "################| Installing composer |#####################"
+echo "################|------------ --------|#####################"
+echo "############################################################"
+echo "############################################################"
+curl -sS https://getcomposer.org/installer -o composer-setup.php
+sudo php composer-setup.php --install-dir=/usr/local/bin --filename=composer
+unlink composer-setup.php
+echo "Done."
 
-to add channel
-go to ipaddress:15672
-	queues > add new queue
+
+echo "############################################################"
+echo "############################################################"
+echo "################|----------------------|#####################"
+echo "################| configuring composer |#####################"
+echo "################|----------------------|#####################"
+echo "############################################################"
+echo "############################################################"
+echo '{"require": {"php-amqplib/php-amqplib": ">=2.9.0"}} > composer.json
+composer install
+echo "Done."
+
+clear
+
+echo "To Check: goto to your browser and type type this:"
+echo "<YOUR IP>:15672"
+
+echo "Username: username"
+echo "Password: password"
