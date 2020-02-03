@@ -102,5 +102,7 @@ sudo rm *
 clear
 ifconfig
 echo "Setup Complete." 
+
+sudo su
 echo "<?php phpinfo(); ?>" > /var/www/html/index.php
- 
+exit
