@@ -2,7 +2,7 @@
 cd
 sudo apt update
 
-phpVersion = "php7.0";
+phpVersion = php7.0
 
 
 echo "############################################################"
