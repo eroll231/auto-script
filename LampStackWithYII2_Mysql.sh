@@ -1,9 +1,6 @@
 cd
 sudo apt update
 
-phpVersion = "php7.0";
-
-
 echo "############################################################"
 echo "############################################################"
 echo "######################|-----------|#########################"
@@ -89,7 +86,7 @@ echo "###################| Installing Modules |###################"
 echo "###################|--------------------|###################"
 echo "############################################################"
 echo "############################################################"
-sudo apt-get install $phpVersion-bcmath $phpVersion-cli $phpVersion-common $phpVersion-curl $phpVersion-dev $phpVersion-gd $phpVersion-json $phpVersion-mcrypt $phpVersion-mysql $phpVersion-mbstring $phpVersion-xml $phpVersion-zip -y
+sudo apt-get install php7.0-bcmath php7.0-cli php7.0-common php7.0-curl php7.0-dev php7.0-gd php7.0-json php7.0-mcrypt php7.0-mysql php7.0-mbstring php7.0-xml php7.0-zip -y
 
 
 echo "############################################################"
