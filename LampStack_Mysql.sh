@@ -103,4 +103,4 @@ clear
 ifconfig
 echo "Setup Complete." 
 echo "<?php phpinfo(); ?>" > /var/www/html/index.php
-
+ 
