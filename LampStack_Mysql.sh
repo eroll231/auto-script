@@ -12,7 +12,7 @@ echo "############################################################"
 sudo locale-gen "en_US.UTF-8"
 
 sudo su
-echo -e 'LANG="en_US.UTF-8" \n LANGUAGE="en_US.UTF-8" \n LC_ALL="en_US:en_US.UTF-8" \n ' > /etc/default/locale
+echo -e 'LANG="en_US.UTF-8" \n LANGUAGE="en_US.UTF-8" \n' > /etc/default/locale
 exit
 
 
@@ -25,7 +25,7 @@ echo "############################################################"
 echo "############################################################"
 echo "mysql-server mysql-server/root_password password root" | sudo debconf-set-selections
 echo "mysql-server mysql-server/root_password_again password root" | sudo debconf-set-selections
-apt-get -y install mysql-server mysql-client
+sudo apt-get -y install mysql-server mysql-client
 
 
 echo "############################################################"
