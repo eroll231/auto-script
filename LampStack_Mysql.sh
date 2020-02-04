@@ -76,11 +76,11 @@ unlink composer-setup.php
 echo "############################################################"
 echo "############################################################"
 echo "##################|-------------------|####################"
-echo "##################| Installing $PHPVERSION |#####################"
+echo "##################| Installing php7.0 |#####################"
 echo "##################|-------------------|#####################"
 echo "############################################################"
 echo "############################################################"
-sudo apt install $PHPVERSION -y
+sudo apt install php7.0 -y
 
 
 echo "############################################################"
@@ -90,7 +90,7 @@ echo "###################| Installing Modules |###################"
 echo "###################|--------------------|###################"
 echo "############################################################"
 echo "############################################################"
-sudo apt-get install $PHPVERSION-bcmath $PHPVERSION-cli $PHPVERSION-common $PHPVERSION-curl $PHPVERSION-dev $PHPVERSION-gd $PHPVERSION-json $PHPVERSION-mcrypt $PHPVERSION-mysql $PHPVERSION-mbstring $PHPVERSION-xml $PHPVERSION-zip -y
+sudo apt-get install php7.0-bcmath php7.0-cli php7.0-common php7.0-curl php7.0-dev php7.0-gd php7.0-json php7.0-mcrypt php7.0-mysql php7.0-mbstring php7.0-xml php7.0-zip -y
 
 
 echo "############################################################"
