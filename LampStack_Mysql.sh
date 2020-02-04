@@ -14,8 +14,9 @@ echo "############################################################"
 echo "############################################################"
 sudo locale-gen "en_US.UTF-8"
 
+
 sudo su
-echo -e 'LANG="en_US.UTF-8" \n LANGUAGE="en_US.UTF-8" \n' > /etc/default/locale
+echo -e 'LANG="en_US.UTF-8" \n LANGUAGE="en_US.UTF-8" \n LC_CTYPE = "UTF-8"' > /etc/default/locale
 exit
 
 
