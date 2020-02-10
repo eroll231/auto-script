@@ -51,7 +51,7 @@ echo "###################| Installing Modules |###################"
 echo "###################|--------------------|###################"
 echo "############################################################"
 echo "############################################################"
-sudo apt-get install php7.2-bcmath php7.2-cli php7.2-common php7.2-curl php7.2-dev php7.2-gd php7.2-json php7.2-mysql php7.2-mbstring php7.2-xml php7.2-zip
+sudo apt-get install php7.2-bcmath php7.2-cli php7.2-common php7.2-curl php7.2-dev php7.2-gd php7.2-json php7.2-mysql php7.2-mbstring php7.2-xml php7.2-zip -y
 # sudo apt-get install php7.0-bcmath php7.0-cli php7.0-common php7.0-curl php7.0-dev php7.0-gd php7.0-json php7.0-mcrypt php7.0-mysql php7.0-mbstring php7.0-xml php7.0-zip -y
 
 
