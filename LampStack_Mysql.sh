@@ -78,6 +78,9 @@ echo "##################| Installing php7.0 |#####################"
 echo "##################|-------------------|#####################"
 echo "############################################################"
 echo "############################################################"
+sudo apt-get install software-properties-common python-software-properties -y
+sudo add-apt-repository -y ppa:ondrej/php
+sudo apt-get update
 sudo apt install php7.2 -y
 
 
