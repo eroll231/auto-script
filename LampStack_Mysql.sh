@@ -28,27 +28,20 @@ sudo apt install unzip git curl -y
 
 echo "############################################################"
 echo "############################################################"
-echo "####################|---------------------|#################"
-echo "####################| Installing composer |#################"
-echo "####################|---------------------|#################"
-echo "############################################################"
-echo "############################################################"
-curl -sS https://getcomposer.org/installer -o composer-setup.php
-sudo php composer-setup.php --install-dir=/usr/local/bin --filename=composer
-unlink composer-setup.php
-
-
-echo "############################################################"
-echo "############################################################"
 echo "##################|-------------------|####################"
-echo "##################| Installing php7.0 |#####################"
+echo "##################|   Installing php  |#####################"
 echo "##################|-------------------|#####################"
 echo "############################################################"
 echo "############################################################"
+
+#7.2
 sudo apt-get install software-properties-common python-software-properties -y
 sudo add-apt-repository -y ppa:ondrej/php
 sudo apt-get update
 sudo apt install php7.2 -y
+
+# 7.0
+# sudo apt install php7.0 -y
 
 
 echo "############################################################"
@@ -58,7 +51,8 @@ echo "###################| Installing Modules |###################"
 echo "###################|--------------------|###################"
 echo "############################################################"
 echo "############################################################"
-sudo apt-get install php7.2-bcmath php7.2-cli php7.2-common php7.2-curl php7.2-dev php7.2-gd php7.2-json php7.2-mcrypt php7.2-mysql php7.2-mbstring php7.2-xml php7.2-zip -y
+sudo apt-get install php7.2-bcmath php7.2-cli php7.2-common php7.2-curl php7.2-dev php7.2-gd php7.2-json php7.2-mysql php7.2-mbstring php7.2-xml php7.2-zip
+# sudo apt-get install php7.0-bcmath php7.0-cli php7.0-common php7.0-curl php7.0-dev php7.0-gd php7.0-json php7.0-mcrypt php7.0-mysql php7.0-mbstring php7.0-xml php7.0-zip -y
 
 
 echo "############################################################"
@@ -91,6 +85,19 @@ echo "##############|----------------------------|################"
 echo "############################################################"
 echo "############################################################"
 sudo apt install php libapache2-mod-php -y
+
+
+echo "############################################################"
+echo "############################################################"
+echo "####################|---------------------|#################"
+echo "####################| Installing composer |#################"
+echo "####################|---------------------|#################"
+echo "############################################################"
+echo "############################################################"
+curl -sS https://getcomposer.org/installer -o composer-setup.php
+sudo php7.2 composer-setup.php --install-dir=/usr/local/bin --filename=composer
+# sudo php composer-setup.php --install-dir=/usr/local/bin --filename=composer
+unlink composer-setup.php
 
 
 echo "############################################################"
