@@ -25,6 +25,36 @@ echo "############################################################"
 sudo apt install unzip git curl -y
 
 
+
+echo "############################################################"
+echo "############################################################"
+echo "######################|---------------------|###############"
+echo "######################|   Installing NPM    |###############"
+echo "######################|---------------------|###############"
+echo "############################################################"
+echo "############################################################"
+sudo apt install nodejs -y
+sudo apt install npm -y
+
+
+
+echo "############################################################"
+echo "############################################################"
+echo "###################|----------------------|#################"
+echo "###################|Installing SWAP MEMORY|#################"
+echo "###################|----------------------|#################"
+echo "############################################################"
+echo "############################################################"
+sudo fallocate -l 1G /swapfile
+sudo chmod 600 /swapfile
+sudo mkswap /swapfile
+sudo swapon /swapfile
+sudo su
+sudo echo "/swapfile swap swap defaults 0 0  LABEL=cloudimg-rootfs   /        ext4   defaults        0 0" > /etc/fstab 
+exit
+
+
+
 echo "############################################################"
 echo "############################################################"
 echo "##################|-------------------|####################"
@@ -32,10 +62,8 @@ echo "##################|   Installing php  |#####################"
 echo "##################|-------------------|#####################"
 echo "############################################################"
 echo "############################################################"
-sudo apt-get install software-properties-common python-software-properties -y
-sudo add-apt-repository -y ppa:ondrej/php
-sudo apt-get update
-sudo apt install php7.2
+sudo apt install php7.2 -y
+
 
 
 
@@ -46,7 +74,7 @@ echo "###################| Installing Modules |###################"
 echo "###################|--------------------|###################"
 echo "############################################################"
 echo "############################################################"
-sudo apt-get --yes --force-yes install php7.2-bcmath php7.2-cli php7.2-common php7.2-curl php7.2-dev php7.2-gd php7.2-json php7.2-mysql php7.2-mbstring php7.2-xml php7.2-zip
+sudo apt-get install php7.2-bcmath php7.2-cli php7.2-common php7.2-curl php7.2-dev php7.2-gd php7.2-json php7.2-mysql php7.2-mbstring php7.2-xml php7.2-zip -y
 
 
 
@@ -81,7 +109,7 @@ echo "##############| Installing Apache2 Library |################"
 echo "##############|----------------------------|################"
 echo "############################################################"
 echo "############################################################"
-sudo apt install php7.2 libapache2-mod-php
+sudo apt install php7.2 libapache2-mod-php -y
 
 
 
@@ -93,19 +121,8 @@ echo "####################|---------------------|#################"
 echo "############################################################"
 echo "############################################################"
 curl -sS https://getcomposer.org/installer -o composer-setup.php
-sudo php composer-setup.php --install-dir=/usr/local/bin --filename=composer
+sudo php7.2 composer-setup.php --install-dir=/usr/local/bin --filename=composer
 unlink composer-setup.php
-
-
-
-echo "############################################################"
-echo "############################################################"
-echo "######################|---------------------|###############"
-echo "######################|   Installing NPM    |###############"
-echo "######################|---------------------|###############"
-echo "############################################################"
-echo "############################################################"
-sudo apt install npm -y
 
 
 
@@ -116,25 +133,7 @@ echo "####################|Installing LARAVEL5.6|#################"
 echo "####################|---------------------|#################"
 echo "############################################################"
 echo "############################################################"
-sudo apt-get --yes --force-yes install php7.4-bcmath php7.4-cli php7.4-common php7.4-curl php7.4-dev php7.4-gd php7.4-json php7.4-mysql php7.4-mbstring php7.4-xml php7.4-zip
 sudo composer global require "laravel/installer"
-
-
-
-echo "############################################################"
-echo "############################################################"
-echo "###################|----------------------|#################"
-echo "###################|Installing SWAP MEMORY|#################"
-echo "###################|----------------------|#################"
-echo "############################################################"
-echo "############################################################"
-sudo fallocate -l 1G /swapfile
-sudo chmod 600 /swapfile
-sudo mkswap /swapfile
-sudo swapon /swapfile
-sudo su
-sudo echo "/swapfile swap swap defaults 0 0  LABEL=cloudimg-rootfs   /        ext4   defaults        0 0" > /etc/fstab 
-exit
 
 
 
@@ -146,6 +145,7 @@ echo "###################|----------------------|#################"
 echo "############################################################"
 echo "############################################################"
 cd /var/www/html
+sudo rm -rf blog
 sudo composer create-project --prefer-dist laravel/laravel blog "5.6.*"
 
 
@@ -163,8 +163,6 @@ sudo chown -R www-data:www-data /var/www/html
 
 cd blog
 sudo composer install
-sudo npm install
-
 
 sudo su
 echo '
