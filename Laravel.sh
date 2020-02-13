@@ -8,10 +8,11 @@ sudo apt update
 # echo "######################|-----------|#########################"
 # echo "############################################################"
 # echo "############################################################"
-# sudo locale-gen "en_US.UTF-8"
-# export LANGUAGE=en_US.UTF-8
-# export LC_ALL=en_US.UTF-8
-# sudo dpkg-reconfigure locales
+#sudo locale-gen "en_US.UTF-8"
+# sudo su
+# echo -e 'LANG="en_US.UTF-8" \n LANGUAGE="en_US.UTF-8" \n LC_CTYPE = "UTF-8"' > /etc/default/locale
+# exit
+
 
 
 echo "############################################################"
@@ -46,6 +47,7 @@ echo "###################|--------------------|###################"
 echo "############################################################"
 echo "############################################################"
 sudo apt-get --yes --force-yes install php7.2-bcmath php7.2-cli php7.2-common php7.2-curl php7.2-dev php7.2-gd php7.2-json php7.2-mysql php7.2-mbstring php7.2-xml php7.2-zip
+sudo apt-get --yes --force-yes install php7.4-bcmath php7.4-cli php7.4-common php7.4-curl php7.4-dev php7.4-gd php7.4-json php7.4-mysql php7.4-mbstring php7.4-xml php7.4-zip
 
 
 
@@ -97,6 +99,96 @@ unlink composer-setup.php
 
 
 
+echo "############################################################"
+echo "############################################################"
+echo "######################|---------------------|###############"
+echo "######################|   Installing NPM    |###############"
+echo "######################|---------------------|###############"
+echo "############################################################"
+echo "############################################################"
+sudo apt install npm -y
+
+
+
+echo "############################################################"
+echo "############################################################"
+echo "####################|---------------------|#################"
+echo "####################|Installing LARAVEL5.6|#################"
+echo "####################|---------------------|#################"
+echo "############################################################"
+echo "############################################################"
+sudo composer global require "laravel/installer"
+
+
+
+echo "############################################################"
+echo "############################################################"
+echo "###################|----------------------|#################"
+echo "###################|Installing SWAP MEMORY|#################"
+echo "###################|----------------------|#################"
+echo "############################################################"
+echo "############################################################"
+sudo fallocate -l 1G /swapfile
+sudo chmod 600 /swapfile
+sudo mkswap /swapfile
+sudo swapon /swapfile
+sudo su
+sudo echo "/swapfile swap swap defaults 0 0  LABEL=cloudimg-rootfs   /        ext4   defaults        0 0" > /etc/fstab 
+exit
+
+
+
+echo "############################################################"
+echo "############################################################"
+echo "###################|----------------------|#################"
+echo "###################|Downloading LARAVEL5.6|#################"
+echo "###################|----------------------|#################"
+echo "############################################################"
+echo "############################################################"
+cd /var/www/html
+sudo composer create-project --prefer-dist laravel/laravel blog "5.6.*"
+
+
+
+echo "############################################################"
+echo "############################################################"
+echo "###################|----------------------|#################"
+echo "###################|Configuring LARAVEL5.6|#################"
+echo "###################|----------------------|#################"
+echo "############################################################"
+echo "############################################################"
+
+sudo chmod -R 775 /var/www/html/
+sudo chown -R www-data:www-data /var/www/html
+
+cd blog
+sudo composer install
+sudo npm install
+
+
+sudo su
+echo '
+<VirtualHost *:80>
+        ServerAdmin webmaster@localhost
+        DocumentRoot /var/www/html/blog/public
+        
+        <Directory "/var/www/html/advanced/backend/web">
+            Options +FollowSymLinks -Indexes
+            RewriteEngine On
+
+            RewriteCond %{REQUEST_FILENAME} !-d
+            RewriteCond %{REQUEST_FILENAME} !-f
+            RewriteRule ^ index.php [L]
+       </Directory>
+        
+        ErrorLog ${APACHE_LOG_DIR}/error.log
+        CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+' >| /etc/apache2/sites-available/000-default.conf
+exit
+
+sudo a2enmod rewrite
+sudo service apache2 restart
 
 
 
@@ -104,10 +196,10 @@ unlink composer-setup.php
 
 
 
-
-
-
-
-
-
-
+echo "############################################################"
+echo "############################################################"
+echo "####################|-----------------|#####################"
+echo "####################|  Ready to Serve |#####################"
+echo "####################|-----------------|#####################"
+echo "############################################################"
+echo "############################################################"
