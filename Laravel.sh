@@ -172,7 +172,7 @@ echo '
         ServerAdmin webmaster@localhost
         DocumentRoot /var/www/html/blog/public
         
-        <Directory "var/www/html/blog/public">
+        <Directory "/var/www/html/blog/public">
             Options +FollowSymLinks -Indexes
             RewriteEngine On
 
