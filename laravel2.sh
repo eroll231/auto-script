@@ -34,7 +34,7 @@ exit
 
 
 
-
+composer global require laravel/installer
 cd /var/www/html
 sudo composer create-project laravel/laravel laravelProject --prefer-dist
 
