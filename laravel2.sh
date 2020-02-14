@@ -50,7 +50,7 @@ sudo chmod -R 775 /var/www/html/laravelProject/
 
 
 cd /etc/apache2/sites-available
-sudo nano laravel.conf
+sudo touch laravel.conf
 
 
 
@@ -58,19 +58,22 @@ sudo nano laravel.conf
 sudo su
 echo '
 <VirtualHost *:80>
-    ServerName yourdomain.tld
+        ServerAdmin webmaster@localhost
+        DocumentRoot /var/www/html/laravelProject/public
 
-    ServerAdmin webmaster@localhost
-    DocumentRoot /var/www/html/laravelProject/public
+        <Directory /var/www/html/laravelProject>
+            Options +FollowSymLinks -Indexes
+            RewriteEngine On
 
-    <Directory /var/www/html/your-project>
-        AllowOverride All
-    </Directory>
-
-    ErrorLog ${APACHE_LOG_DIR}/error.log
-    CustomLog ${APACHE_LOG_DIR}/access.log combined
+            RewriteCond %{REQUEST_FILENAME} !-d
+            RewriteCond %{REQUEST_FILENAME} !-f
+            RewriteRule ^ index.php [L]
+       </Directory>
+        
+        ErrorLog ${APACHE_LOG_DIR}/error.log
+        CustomLog ${APACHE_LOG_DIR}/access.log combined
 </VirtualHost>
-' >| /etc/apache2/sites-available/000-default.conf
+' >| /etc/apache2/sites-available/laravel.conf
 exit
 
 
@@ -81,6 +84,7 @@ sudo service apache2 restart
 
 clear
 ifconfig
+echo "Done, copy your IP and paste to url";
 
 
 
