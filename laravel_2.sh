@@ -47,7 +47,7 @@ exit
 
 
 echo "###################################[ 5 ]###################################"
-sudo composer global require laravel/installer
+# sudo composer global require laravel/installer
 cd /var/www/html
 sudo composer create-project laravel/laravel laravelProject --prefer-dist
 
