@@ -36,14 +36,14 @@ exit
 
 
 cd /var/www/html
-sudo composer create-project laravel/laravel your-project --prefer-dist
+sudo composer create-project laravel/laravel laravelProject --prefer-dist
 
 
 
 
 
-sudo chgrp -R www-data /var/www/html/your-project
-sudo chmod -R 775 /var/www/html/your-project/storage
+sudo chgrp -R www-data /var/www/html/laravelProject/
+sudo chmod -R 775 /var/www/html/laravelProject/
 
 
 
@@ -61,7 +61,7 @@ echo '
     ServerName yourdomain.tld
 
     ServerAdmin webmaster@localhost
-    DocumentRoot /var/www/html/your-project/public
+    DocumentRoot /var/www/html/laravelProject/public
 
     <Directory /var/www/html/your-project>
         AllowOverride All
