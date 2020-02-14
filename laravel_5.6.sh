@@ -2,10 +2,10 @@ cd
 sudo apt-get update
 sudo apt-get upgrade -y
 
+echo "###################################[ 0 ]###################################"
+sudo apt install git curl unzip -y
 
 echo "###################################[ 1 ]###################################"
-
-
 sudo add-apt-repository ppa:ondrej/php
 sudo apt-get update
 sudo apt-get install apache2 libapache2-mod-php7.2 php7.2 php7.2-bcmath php7.2-cli php7.2-common php7.2-curl php7.2-dev php7.2-gd php7.2-json php7.2-mysql php7.2-mbstring php7.2-xml php7.2-zip
@@ -44,17 +44,20 @@ exit
 echo "###################################[ 5 ]###################################"
 sudo composer global require laravel/installer
 cd /var/www/html
-# sudo composer create-project laravel/laravel laravelProject --prefer-dist
-sudo composer create-project --prefer-dist laravel/laravel laravelProject "5.6.*"
-
+# sudo composer create-project --prefer-dist laravel/laravel laravelProject "5.6.*"
+sudo composer create-project laravel/laravel laravelProject "5.6.*" --prefer-dist
 
 
 
 
 echo "###################################[ 6 ]###################################"
-sudo chgrp -R www-data /var/www/html/laravelProject/
-sudo chmod -R 775 /var/www/html/laravelProject/
+# sudo chgrp -R www-data /var/www/html/laravelProject/
+# sudo chmod -R 775 /var/www/html/laravelProject/
+sudo chmod -R 775 /var/www/html
+sudo chown -R www-data:www-data /var/www/html
 
+cd laravelProject
+sudo composer install 
 
 
 
