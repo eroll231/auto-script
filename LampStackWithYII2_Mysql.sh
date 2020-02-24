@@ -15,16 +15,16 @@ echo -e 'LANG="en_US.UTF-8" \n LANGUAGE="en_US.UTF-8" \n LC_ALL="en_US:en_US.UTF
 exit
 
 
-echo "############################################################"
-echo "############################################################"
-echo "######################|---------------|#####################"
-echo "######################| Install MySQL |#####################"
-echo "######################|---------------|####################"
-echo "############################################################"
-echo "############################################################"
-echo "mysql-server mysql-server/root_password password root" | sudo debconf-set-selections
-echo "mysql-server mysql-server/root_password_again password root" | sudo debconf-set-selections
-sudo apt install mysql-server mysql-client -y
+# echo "############################################################"
+# echo "############################################################"
+# echo "######################|---------------|#####################"
+# echo "######################| Install MySQL |#####################"
+# echo "######################|---------------|####################"
+# echo "############################################################"
+# echo "############################################################"
+# echo "mysql-server mysql-server/root_password password root" | sudo debconf-set-selections
+# echo "mysql-server mysql-server/root_password_again password root" | sudo debconf-set-selections
+# sudo apt install mysql-server mysql-client -y
 
 
 echo "############################################################"
