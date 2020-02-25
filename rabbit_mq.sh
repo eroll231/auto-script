@@ -72,7 +72,7 @@ echo "################| configuring composer |#####################"
 echo "################|----------------------|#####################"
 echo "############################################################"
 echo "############################################################"
-echo '{"require": {"php-amqplib/php-amqplib": ">=2.9.0"}} > composer.json
+echo '{"require": {"php-amqplib/php-amqplib": ">=2.9.0"}}' > composer.json
 composer install
 echo "Done."
 
