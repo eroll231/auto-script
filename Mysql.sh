@@ -13,4 +13,6 @@ sudo apt install mysql-server mysql-client -y
 clear
 echo "Now install a module, base on your php version";
 echo "Done !"
+echo "usr: root"
+echo "pwd: password"
 
