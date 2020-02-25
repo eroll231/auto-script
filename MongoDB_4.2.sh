@@ -20,4 +20,5 @@ sudo systemctl stop mongod
 sudo systemctl restart mongod 
 
 clear
+echo "Now install a module, base on your php version";
 echo "Done !"
