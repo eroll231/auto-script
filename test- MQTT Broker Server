@@ -1,0 +1,19 @@
+cd
+sudo apt-get update
+sudo apt-get install unzip git curl -y
+sudo apt install libmosquitto-dev -y
+sudo apt-get install lib32z1 -y
+sudo apt-get install build-essential libc-ares-dev uuid-dev libssl-dev openssl libssl-dev libcurl4-openssl-dev libwrap0-dev xsltproc docbook-xsl -y
+
+
+
+sudo su
+adduser mosquitto
+#### unix password
+### re enter
+exit
+
+
+
+
+
