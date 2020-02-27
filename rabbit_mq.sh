@@ -34,9 +34,9 @@ echo "##################|------------------------|################"
 echo "############################################################"
 echo "############################################################"
 sudo rabbitmq-plugins enable rabbitmq_management
-sudo rabbitmqctl add_user username password
-sudo rabbitmqctl set_user_tags username administrator
-sudo rabbitmqctl set_permissions -p / username ".*" ".*" ".*"
+sudo rabbitmqctl add_user admin hive1234
+sudo rabbitmqctl set_user_tags admin administrator
+sudo rabbitmqctl set_permissions -p / admin ".*" ".*" ".*"
 echo "Done."
 
 
@@ -81,5 +81,6 @@ clear
 echo "To Check: goto to your browser and type type this:"
 echo "<YOUR IP>:15672"
 
-echo "Username: username"
-echo "Password: password"
+echo "Username: admin"
+echo "Password: hive1234"
+
